@@ -1,3 +1,5 @@
+<?php session_start(); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -66,13 +68,21 @@
           <li><a href="events.php">Events</a></li>
           <li><a href="internship.php">Internships</a></li>
           <li><a href="taketest.php">Take Test</a></li>
-          <li><a href="login.php" >LOG IN</a></li>
+          <?php if(!isset($_SESSION['user'])){
+          echo '<li><a href="login.php" >LOG IN</a></li>';
+          echo '<a href="signup.php" class="get-started-btn">SIGN UP</a>';
+          }
+          else{
+            echo '<li><a href="logout.php" >LOG OUT</a></li>';
+            echo '<a href="#" class="get-started-btn">'.$_SESSION["user"].'-'.$_SESSION["name"].'</a>';
+          } ?>
+
 
         </ul>
       </nav><!-- .nav-menu -->
 
       <!-- <a href="internship.php" class="get-started-btn">Get Started</a> -->
-      <a href="signup.php" class="get-started-btn">SIGN UP</a>
+      
 
     </div>
     
